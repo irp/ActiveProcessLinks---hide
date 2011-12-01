@@ -38,8 +38,8 @@ const _FLT_CONTEXT_REGISTRATION ContextRegistration[] = {
 };
 
 const _FLT_OPERATION_REGISTRATION  OperationRegistration[] = {
-
-	{ IRP_MJ_CREATE, 0, PreOp, 0 },
+    
+    { IRP_MJ_CREATE, 0, PreOp, 0 },
     { IRP_MJ_WRITE, 0, PreOp, 0 },
     { IRP_MJ_READ, 0, PreOp, 0 },
     { IRP_MJ_OPERATION_END }
@@ -62,13 +62,13 @@ extern "C" NTSTATUS NTAPI DriverEntry
 	(__in PDRIVER_OBJECT pDriverObject, 
 	 __in PUNICODE_STRING pRegistryPath) {
 
-		 DbgPrint("DriverEntry\n");
+	 DbgPrint("DriverEntry\n");
 
          NTSTATUS ntstatus = FltRegisterFilter(pDriverObject, 
 			 &FilterRegistration, &s.filter);
 
-		 ntstatus = FltStartFiltering(s.filter);
-		 return ntstatus; }
+	 ntstatus = FltStartFiltering(s.filter);
+	 return ntstatus; }
 
 extern "C" VOID NTAPI FilterUnload
 	(__in PDRIVER_OBJECT pDriverObject) {
